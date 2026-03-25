@@ -667,7 +667,11 @@ const MessageInput = memo(function MessageInput() {
                         backgroundColor: '#00A884',
                         borderRadius: '2px',
                         height: `${20 + Math.random() * 80}%`,
-                        animation: `waveform ${0.5 + Math.random() * 0.5}s ease-in-out infinite alternate`,
+                        animationName: 'waveform',
+                        animationDuration: `${0.5 + Math.random() * 0.5}s`,
+                        animationTimingFunction: 'ease-in-out',
+                        animationIterationCount: 'infinite',
+                        animationDirection: 'alternate',
                         animationDelay: `${i * 0.05}s`,
                       }}
                     />
@@ -780,7 +784,7 @@ const MessageInput = memo(function MessageInput() {
               flex: 1,
               backgroundColor: theme.inputBackgroundColor || '#FFFFFF',
               borderRadius: '24px',
-              padding: '8px 12px',
+              padding: '13px 12px',
               display: 'flex',
               alignItems: 'center',
             }}>

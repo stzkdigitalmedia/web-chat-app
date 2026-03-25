@@ -22,6 +22,14 @@ export default function RoomList({ fetchRoomsAction = null, onCreateRoom = null,
   const [isSearchMode, setIsSearchMode] = useState(false);
   const { modal, message: messageApi } = App.useApp();
 
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsLargeScreen(window.innerWidth >= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Contact search functionality
   const handleContactSearch = async (query) => {
     if (!query.trim()) {
@@ -418,6 +426,7 @@ export default function RoomList({ fetchRoomsAction = null, onCreateRoom = null,
       style={{
         height: '100%',
         display: 'flex',
+        marginLeft: isLargeScreen ? '80px' : '0px',
         flexDirection: 'column',
         backgroundColor: theme?.
           sidebarBackgroundColor || '#FFFFFF',
